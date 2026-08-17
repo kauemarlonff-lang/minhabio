@@ -48,14 +48,15 @@
             100% { opacity: 0.4; }
         }
 
+        /* Vídeo de fundo cobrindo a tela toda atrás de tudo */
         #video-background {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
-            z-index: -1;
+            z-index: -10;
         }
 
         .container {
@@ -67,16 +68,18 @@
             padding: 20px;
             gap: 15px;
             box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-card, .whatsapp-box, .music-player {
             width: 100%;
             max-width: 450px;
-            background-color: rgba(20, 20, 23, 0.65);
+            background-color: rgba(20, 20, 23, 0.55); /* Bem translúcido para o vídeo aparecer atrás */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             box-sizing: border-box;
         }
 
@@ -124,7 +127,7 @@
             padding: 0 20px;
         }
 
-        /* WhatsApp box */
+        /* WhatsApp box abrindo o vídeo de fundo */
         .whatsapp-box {
             padding: 15px;
             text-decoration: none;
@@ -136,7 +139,7 @@
         }
 
         .whatsapp-box:hover {
-            background-color: rgba(30, 30, 35, 0.8);
+            background-color: rgba(30, 30, 35, 0.75);
             transform: translateY(-2px);
         }
 
@@ -286,9 +289,9 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
-    <!-- Vídeo de fundo com o nome exato do arquivo -->
+    <!-- Vídeo de fundo com o nome background.mp4 -->
     <video id="video-background" autoplay muted loop playsinline>
-        <source src="VID_20250513_111007_345.mp4" type="video/mp4">
+        <source src="background.mp4" type="video/mp4">
     </video>
 
     <audio id="music-player" loop>
@@ -308,8 +311,8 @@
             </div>
         </div>
 
-        <!-- Botão com ícone do WhatsApp de enfeite, abrindo o vídeo exato da pasta -->
-        <a href="VID_20250513_111007_345.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
+        <!-- Botão com ícone do WhatsApp de enfeite, abrindo o background.mp4 -->
+        <a href="background.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
             <div class="whatsapp-header">
                 <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
                 <div class="whatsapp-info-container">

@@ -69,7 +69,7 @@
             box-sizing: border-box;
         }
 
-        .profile-card, .discord-box, .music-player {
+        .profile-card, .whatsapp-box, .music-player {
             width: 100%;
             max-width: 450px;
             background-color: rgba(20, 20, 23, 0.65);
@@ -124,8 +124,8 @@
             padding: 0 20px;
         }
 
-        /* Discord box */
-        .discord-box {
+        /* WhatsApp box (substituindo a antiga do Discord) */
+        .whatsapp-box {
             padding: 15px;
             text-decoration: none;
             color: white;
@@ -135,19 +135,18 @@
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        .discord-box:hover {
+        .whatsapp-box:hover {
             background-color: rgba(30, 30, 35, 0.8);
             transform: translateY(-2px);
         }
 
-        .discord-header {
+        .whatsapp-header {
             display: flex;
             align-items: center;
             gap: 12px;
-            position: relative;
         }
 
-        .discord-pic {
+        .whatsapp-pic {
             width: 45px;
             height: 45px;
             border-radius: 50%;
@@ -155,29 +154,29 @@
             object-fit: cover;
         }
 
-        .discord-info-container {
+        .whatsapp-info-container {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .discord-name-row {
+        .whatsapp-name-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .discord-name {
+        .whatsapp-name {
             font-weight: bold;
             font-size: 16px;
         }
 
-        .discord-icon {
+        .whatsapp-icon {
             font-size: 20px;
-            color: #5865F2;
+            color: #25D366; /* Cor verde do WhatsApp */
         }
 
-        .discord-status {
+        .whatsapp-status {
             display: flex;
             align-items: center;
             font-size: 12px;
@@ -308,16 +307,16 @@
             </div>
         </div>
 
-        <!-- Discord Box (Clicável para abrir o perfil do Discord) -->
-        <a href="https://discord.com/users/1284897089163014154" target="_blank" class="discord-box" id="discord-profile">
-            <div class="discord-header">
-                <img id="discord-avatar" class="discord-pic" src="avatar.png" alt="Discord Avatar">
-                <div class="discord-info-container">
-                    <div class="discord-name-row">
-                        <div class="discord-name" id="discord-username">Metificha</div>
-                        <i class="fa-brands fa-discord discord-icon"></i>
+        <!-- Botão com o ícone do WhatsApp levando para o link do vídeo (substitua o link abaixo pelo seu vídeo do YouTube ou outro link) -->
+        <a href="https://www.youtube.com/watch?v=SEU_LINK_DO_VIDEO_AQUI" target="_blank" class="whatsapp-box" id="discord-profile">
+            <div class="whatsapp-header">
+                <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
+                <div class="whatsapp-info-container">
+                    <div class="whatsapp-name-row">
+                        <div class="whatsapp-name" id="discord-username">Metificha</div>
+                        <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
                     </div>
-                    <div class="discord-status">
+                    <div class="whatsapp-status">
                         <div class="status-indicator" id="status-indicator"></div>
                         <span id="discord-status-text">Online</span>
                     </div>

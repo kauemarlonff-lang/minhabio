@@ -124,7 +124,7 @@
             padding: 0 20px;
         }
 
-        /* WhatsApp box (substituindo a antiga do Discord) */
+        /* WhatsApp box */
         .whatsapp-box {
             padding: 15px;
             text-decoration: none;
@@ -173,7 +173,7 @@
 
         .whatsapp-icon {
             font-size: 20px;
-            color: #25D366; /* Cor verde do WhatsApp */
+            color: #25D366;
         }
 
         .whatsapp-status {
@@ -286,6 +286,7 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
+    <!-- O vídeo de fundo puxando direto da sua pasta (background.mp4) -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="background.mp4" type="video/mp4">
     </video>
@@ -307,8 +308,8 @@
             </div>
         </div>
 
-        <!-- Botão com o ícone do WhatsApp levando para o link do vídeo (substitua o link abaixo pelo seu vídeo do YouTube ou outro link) -->
-        <a href="https://www.youtube.com/watch?v=SEU_LINK_DO_VIDEO_AQUI" target="_blank" class="whatsapp-box" id="discord-profile">
+        <!-- Caixa com ícone do WhatsApp. Mude o link 'https://wa.me/SEUNUMERO' para o que preferir, ou deixe assim -->
+        <a href="https://wa.me/" target="_blank" class="whatsapp-box" id="discord-profile">
             <div class="whatsapp-header">
                 <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
                 <div class="whatsapp-info-container">
@@ -364,7 +365,7 @@
 
         audioPlayer.volume = 0.5;
 
-        // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
+        // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo local
         enterScreen.addEventListener('click', () => {
             enterScreen.style.opacity = '0';
             setTimeout(() => {

@@ -73,31 +73,30 @@
             z-index: 1;
         }
 
-        /* Padrão dos Cards */
-        .profile-card, .discord-box, .music-player {
+        /* Cards translúcidos com efeito vidro */
+        .profile-card, .whatsapp-box, .music-player {
             width: 100%;
-            max-width: 420px;
-            background-color: rgba(18, 18, 22, 0.45);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            max-width: 450px;
+            background-color: rgba(15, 15, 18, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             box-sizing: border-box;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        /* Profile Card */
+        /* Profile */
         .profile-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: 22px;
+            padding-bottom: 25px;
             overflow: hidden;
         }
 
         .profile-banner {
             width: 100%;
-            height: 130px;
+            height: 140px;
             background-color: rgba(0, 0, 0, 0.3);
         }
 
@@ -108,82 +107,85 @@
         }
 
         .profile-pic {
-            width: 95px;
-            height: 95px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            margin-top: -48px;
-            margin-bottom: 10px;
+            border: 3px solid #fff;
+            margin-top: -55px;
+            margin-bottom: 12px;
         }
 
         .profile-name {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Ícones Sociais (como na referência) */
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 18px;
-            opacity: 0.85;
-            transition: opacity 0.2s, transform 0.2s;
-            text-decoration: none;
-        }
-
-        .social-icons a:hover {
-            opacity: 1;
-            transform: scale(1.1);
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
 
         .profile-description {
-            font-size: 13px;
-            opacity: 0.8;
+            font-size: 14px;
+            opacity: 0.9;
             text-align: center;
             padding: 0 20px;
         }
 
-        /* Bloco do Discord */
-        .discord-box {
-            padding: 14px 18px;
+        /* Botão do WhatsApp abrindo o segundo vídeo */
+        .whatsapp-box {
+            padding: 15px;
+            text-decoration: none;
+            color: white;
             display: flex;
-            align-items: center;
-            gap: 14px;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        .discord-pic {
+        .whatsapp-box:hover {
+            background-color: rgba(25, 25, 30, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .whatsapp-pic {
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            border: 2px solid white;
             object-fit: cover;
         }
 
-        .discord-info-container {
+        .whatsapp-info-container {
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
-        .discord-name {
-            font-weight: 600;
-            font-size: 15px;
+        .whatsapp-name-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .discord-status {
+        .whatsapp-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .whatsapp-icon {
+            font-size: 20px;
+            color: #25D366;
+        }
+
+        .whatsapp-status {
             display: flex;
             align-items: center;
             font-size: 12px;
-            opacity: 0.75;
+            opacity: 0.8;
             margin-top: 2px;
         }
 
@@ -191,7 +193,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 5px;
         }
 
         .status-online { background: #3ba55c; }
@@ -199,43 +201,60 @@
         .status-dnd { background: #ed4245; }
         .status-offline { background: #747f8d; }
 
+        .discord-activity {
+            font-size: 13px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .activity-image {
+            margin-top: 8px;
+            width: 100%;
+            max-height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: none;
+        }
+
         /* Music player */
         .music-player {
-            padding: 14px 18px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .song-cover {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .song-info {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 4px;
         }
 
         .song-title {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         .song-artist {
-            font-size: 11px;
-            opacity: 0.75;
+            font-size: 12px;
+            opacity: 0.8;
         }
 
         .progress-container {
             width: 100%;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
             cursor: pointer;
             margin: 4px 0;
         }
@@ -243,30 +262,24 @@
         .progress-bar {
             height: 100%;
             background: #fff;
-            border-radius: 3px;
+            border-radius: 4px;
             width: 0%;
         }
 
         .time-info {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
-            opacity: 0.6;
+            font-size: 10px;
+            opacity: 0.7;
         }
 
         .play-pause {
             background: none;
             border: none;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             padding: 5px;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-
-        .play-pause:hover {
-            opacity: 1;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -278,9 +291,10 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
-    <!-- Vídeo de fundo -->
+    <!-- Vídeo de fundo com múltiplos fallbacks de formato -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="esser.ai" type="video/mp4">
+        <source src="esser.ai" type="video/webm">
     </video>
 
     <audio id="music-player" loop>
@@ -288,37 +302,44 @@
     </audio>
 
     <div class="container">
-        <!-- Profile Card -->
+        <!-- Profile -->
         <div class="profile-card">
             <div class="profile-banner">
                 <img src="banner.png" alt="Banner">
             </div>
             <img src="avatar.png" class="profile-pic" alt="Avatar">
             <div class="profile-name">Metificha</div>
-            
-            <!-- Ícones Sociais iguais ao modelo -->
-            <div class="social-icons">
-                <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://discord.com" target="_blank"><i class="fa-brands fa-discord"></i></a>
-                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-            </div>
-
             <div class="profile-description">
                 parafusometificha | te amo
             </div>
         </div>
 
-        <!-- Bloco do Discord (Status) -->
-        <div class="discord-box">
-            <img id="discord-avatar" class="discord-pic" src="avatar.png" alt="Avatar">
-            <div class="discord-info-container">
-                <div class="discord-name" id="discord-username">Metificha</div>
-                <div class="discord-status">
-                    <div class="status-indicator" id="status-indicator"></div>
-                    <span id="discord-status-text">Loading...</span>
+        <!-- Botão com o WhatsApp de enfeite, abrindo o segundo vídeo -->
+        <a href="VID_20250513_111007_345.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
+            <div class="whatsapp-header">
+                <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
+                <div class="whatsapp-info-container">
+                    <div class="whatsapp-name-row">
+                        <div class="whatsapp-name" id="discord-username">Metificha</div>
+                        <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+                    </div>
+                    <div class="whatsapp-status">
+                        <div class="status-indicator" id="status-indicator"></div>
+                        <span id="discord-status-text">Online</span>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="discord-activity" id="activity-section">
+                <div style="font-weight: bold; margin-bottom: 3px;">Activity:</div>
+                <div id="discord-activity-name">-</div>
+                <img id="activity-image" class="activity-image" src="" alt="">
+            </div>
+            <div class="discord-activity" id="spotify-section">
+                <div style="font-weight: bold; margin-bottom: 3px;">Spotify:</div>
+                <div id="discord-spotify-info">-</div>
+                <img id="spotify-image" class="activity-image" src="" alt="">
+            </div>
+        </a>
 
         <!-- Music Player -->
         <div class="music-player">
@@ -350,9 +371,13 @@
 
         audioPlayer.volume = 0.5;
 
+        // Força o carregamento e play do vídeo via JS
         videoBackground.load();
-        videoBackground.play().catch(() => {});
+        videoBackground.play().catch(err => {
+            console.log("Autoplay bloqueado pelo navegador, aguardando clique:", err);
+        });
 
+        // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
         enterScreen.addEventListener('click', () => {
             enterScreen.style.opacity = '0';
             setTimeout(() => {
@@ -416,6 +441,30 @@
                 
                 const indicator = document.getElementById("status-indicator");
                 indicator.className = `status-indicator status-${d.discord_status}`;
+
+                document.getElementById("activity-section").style.display = "none";
+                document.getElementById("spotify-section").style.display = "none";
+
+                const game = d.activities.find(a => a.type === 0);
+                if (game) {
+                    document.getElementById("activity-section").style.display = "block";
+                    document.getElementById("discord-activity-name").textContent = game.name;
+                    if (game.assets?.large_image) {
+                        let imgKey = game.assets.large_image;
+                        let imgUrl = imgKey.startsWith("mp:external") ? imgKey.replace(/^mp:/, "https:") : `https://cdn.discordapp.com/app-assets/${game.application_id}/${imgKey}.png`;
+                        const actImg = document.getElementById("activity-image");
+                        actImg.src = imgUrl;
+                        actImg.style.display = "block";
+                    }
+                }
+
+                if (d.listening_to_spotify && d.spotify) {
+                    document.getElementById("spotify-section").style.display = "block";
+                    document.getElementById("discord-spotify-info").textContent = `${d.spotify.song} - ${d.spotify.artist}`;
+                    const spotImg = document.getElementById("spotify-image");
+                    spotImg.src = d.spotify.album_art_url;
+                    spotImg.style.display = "block";
+                }
             } catch (err) {
                 console.error(err);
             }

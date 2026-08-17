@@ -3,53 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metificha</title>
+    <title>Ayla Oliveira</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         body, html {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
             color: white;
-            background-color: #0b0b0e;
+            background-color: #070709;
             overflow-x: hidden;
-        }
-
-        /* Tela de Entrada para destravar o som e o vídeo */
-        #enter-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 11, 14, 0.95);
-            backdrop-filter: blur(15px);
-            z-index: 9999;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
+            align-items: center;
         }
 
-        #enter-screen h2 {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin: 0;
-            opacity: 0.8;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
-        }
-
-        /* Vídeo de fundo fixo */
+        /* Vídeo de fundo fixo com tom cinematográfico escuro */
         #video-background {
             position: fixed;
             top: 0;
@@ -58,46 +30,41 @@
             height: 100vh;
             object-fit: cover;
             z-index: -999;
+            filter: brightness(0.4);
         }
 
         .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-            gap: 15px;
+            gap: 14px;
             box-sizing: border-box;
-            position: relative;
             z-index: 1;
         }
 
-        /* Cards translúcidos com efeito vidro */
-        .profile-card, .whatsapp-box, .music-player {
-            width: 100%;
-            max-width: 450px;
-            background-color: rgba(15, 15, 18, 0.35);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-sizing: border-box;
-        }
-
-        /* Profile */
+        /* Cartão de Perfil Principal */
         .profile-card {
+            width: 100%;
+            background: rgba(14, 14, 18, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: 25px;
+            padding-bottom: 24px;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         .profile-banner {
             width: 100%;
-            height: 140px;
-            background-color: rgba(0, 0, 0, 0.3);
+            height: 130px;
+            background-color: #121217;
         }
 
         .profile-banner img {
@@ -107,371 +74,147 @@
         }
 
         .profile-pic {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #fff;
-            margin-top: -55px;
-            margin-bottom: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            margin-top: -50px;
+            margin-bottom: 10px;
+            background: #000;
         }
 
         .profile-name {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .profile-handle {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 10px;
         }
 
         .profile-description {
-            font-size: 14px;
-            opacity: 0.9;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
             text-align: center;
             padding: 0 20px;
+            line-height: 1.4;
         }
 
-        /* Botão do WhatsApp abrindo o segundo vídeo */
-        .whatsapp-box {
-            padding: 15px;
+        /* Botões de Link (Estilo Pílula / Bloco Dark) */
+        .link-button {
+            width: 100%;
+            background: rgba(18, 18, 23, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             text-decoration: none;
             color: white;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .whatsapp-box:hover {
-            background-color: rgba(25, 25, 30, 0.5);
+        .link-button:hover {
+            background: rgba(30, 30, 40, 0.85);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
-        .whatsapp-header {
+        .link-content {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
-        .whatsapp-pic {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 2px solid white;
-            object-fit: cover;
-        }
-
-        .whatsapp-info-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .whatsapp-name-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .whatsapp-name {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .whatsapp-icon {
+        .link-icon {
             font-size: 20px;
-            color: #25D366;
+            width: 24px;
+            text-align: center;
+            color: #fff;
         }
 
-        .whatsapp-status {
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 2px;
-        }
-
-        .status-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-
-        .status-online { background: #3ba55c; }
-        .status-idle { background: #faa61a; }
-        .status-dnd { background: #ed4245; }
-        .status-offline { background: #747f8d; }
-
-        .discord-activity {
-            font-size: 13px;
-            padding: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            display: none;
-        }
-
-        .activity-image {
-            margin-top: 8px;
-            width: 100%;
-            max-height: 120px;
-            object-fit: cover;
-            border-radius: 6px;
-            display: none;
-        }
-
-        /* Music player */
-        .music-player {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .song-cover {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        .song-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .song-title {
+        .link-text {
+            font-weight: 600;
             font-size: 14px;
-            font-weight: bold;
+            letter-spacing: 0.3px;
         }
 
-        .song-artist {
-            font-size: 12px;
-            opacity: 0.8;
+        .link-arrow {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+            transition: transform 0.2s ease;
         }
 
-        .progress-container {
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 4px 0;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #fff;
-            border-radius: 4px;
-            width: 0%;
-        }
-
-        .time-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 10px;
-            opacity: 0.7;
-        }
-
-        .play-pause {
-            background: none;
-            border: none;
+        .link-button:hover .link-arrow {
+            transform: translateX(3px);
             color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 5px;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     </style>
 </head>
 <body>
-    <!-- Tela que destrava o som e o vídeo ao clicar -->
-    <div id="enter-screen">
-        <h2>[ CLIQUE PARA ENTRAR ]</h2>
-    </div>
 
-    <!-- Vídeo de fundo com múltiplos fallbacks de formato -->
+    <!-- Vídeo de fundo escuro e minimalista -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="esser.ai" type="video/mp4">
-        <source src="esser.ai" type="video/webm">
     </video>
 
-    <audio id="music-player" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container">
-        <!-- Profile -->
+        <!-- Bloco de Perfil -->
         <div class="profile-card">
             <div class="profile-banner">
                 <img src="banner.png" alt="Banner">
             </div>
             <img src="avatar.png" class="profile-pic" alt="Avatar">
-            <div class="profile-name">Metificha</div>
+            <div class="profile-name">Ayla Oliveira</div>
+            <div class="profile-handle">@aylac_z</div>
             <div class="profile-description">
-                parafusometificha | te amo
+                criadora de conteúdo & digital | focado no corre
             </div>
         </div>
 
-        <!-- Botão com o WhatsApp de enfeite, abrindo o segundo vídeo -->
-        <a href="VID_20250513_111007_345.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
-            <div class="whatsapp-header">
-                <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
-                <div class="whatsapp-info-container">
-                    <div class="whatsapp-name-row">
-                        <div class="whatsapp-name" id="discord-username">Metificha</div>
-                        <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
-                    </div>
-                    <div class="whatsapp-status">
-                        <div class="status-indicator" id="status-indicator"></div>
-                        <span id="discord-status-text">Online</span>
-                    </div>
-                </div>
+        <!-- Botões de Links (Personalize os links e ícones conforme necessário) -->
+        <a href="https://tiktok.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-tiktok link-icon"></i>
+                <span class="link-text">TikTok Principal</span>
             </div>
-            <div class="discord-activity" id="activity-section">
-                <div style="font-weight: bold; margin-bottom: 3px;">Activity:</div>
-                <div id="discord-activity-name">-</div>
-                <img id="activity-image" class="activity-image" src="" alt="">
-            </div>
-            <div class="discord-activity" id="spotify-section">
-                <div style="font-weight: bold; margin-bottom: 3px;">Spotify:</div>
-                <div id="discord-spotify-info">-</div>
-                <img id="spotify-image" class="activity-image" src="" alt="">
-            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
 
-        <!-- Music Player -->
-        <div class="music-player">
-            <img src="album-cover.jpg" class="song-cover" alt="Cover">
-            <div class="song-info">
-                <div class="song-title">na rk do kaue do odio</div>
-                <div class="song-artist">mete rebolando cu de Beyblade</div>
-                <div class="progress-container" id="progress-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <div class="time-info">
-                    <span id="current-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
+        <a href="https://instagram.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-instagram link-icon"></i>
+                <span class="link-text">Instagram / Perfis</span>
             </div>
-            <button class="play-pause" id="play-button">▶</button>
-        </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        </a>
+
+        <a href="https://youtube.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-youtube link-icon" style="color: #ff0000;"></i>
+                <span class="link-text">Canal do YouTube</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        </a>
+
+        <a href="https://whatsapp.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-whatsapp link-icon" style="color: #25D366;"></i>
+                <span class="link-text">Contato Direto</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        </a>
     </div>
 
-    <script>
-        const enterScreen = document.getElementById('enter-screen');
-        const audioPlayer = document.getElementById('music-player');
-        const videoBackground = document.getElementById('video-background');
-        const playButton = document.getElementById('play-button');
-        const progressBar = document.getElementById('progress-bar');
-        const progressContainer = document.getElementById('progress-container');
-        const currentTimeElement = document.getElementById('current-time');
-        const durationElement = document.getElementById('duration');
-
-        audioPlayer.volume = 0.5;
-
-        // Força o carregamento e play do vídeo via JS
-        videoBackground.load();
-        videoBackground.play().catch(err => {
-            console.log("Autoplay bloqueado pelo navegador, aguardando clique:", err);
-        });
-
-        // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
-        enterScreen.addEventListener('click', () => {
-            enterScreen.style.opacity = '0';
-            setTimeout(() => {
-                enterScreen.style.display = 'none';
-            }, 500);
-
-            audioPlayer.play().then(() => {
-                playButton.textContent = '⏸';
-            }).catch(e => console.log("Erro ao tocar áudio:", e));
-
-            videoBackground.play().catch(e => console.log("Erro ao tocar vídeo:", e));
-        });
-
-        playButton.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playButton.textContent = '⏸';
-            } else {
-                audioPlayer.pause();
-                playButton.textContent = '▶';
-            }
-        });
-
-        audioPlayer.addEventListener('timeupdate', () => {
-            const { currentTime, duration } = audioPlayer;
-            if (duration) {
-                progressBar.style.width = `${(currentTime / duration) * 100}%`;
-                currentTimeElement.textContent = formatTime(currentTime);
-            }
-        });
-
-        audioPlayer.addEventListener('loadedmetadata', () => {
-            durationElement.textContent = formatTime(audioPlayer.duration);
-        });
-
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            audioPlayer.currentTime = (e.offsetX / width) * audioPlayer.duration;
-        });
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
-
-        const userId = "1284897089163014154";
-
-        async function fetchDiscordStatus() {
-            try {
-                const res = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-                const data = await res.json();
-                if (!data.success) return;
-
-                const d = data.data;
-                document.getElementById("discord-avatar").src = `https://cdn.discordapp.com/avatars/${d.discord_user.id}/${d.discord_user.avatar}.png?size=128`;
-                document.getElementById("discord-username").textContent = d.discord_user.username;
-
-                const statusText = { online: "Online", idle: "Idle", dnd: "Do Not Disturb", offline: "Offline" };
-                document.getElementById("discord-status-text").textContent = statusText[d.discord_status] || d.discord_status;
-                
-                const indicator = document.getElementById("status-indicator");
-                indicator.className = `status-indicator status-${d.discord_status}`;
-
-                document.getElementById("activity-section").style.display = "none";
-                document.getElementById("spotify-section").style.display = "none";
-
-                const game = d.activities.find(a => a.type === 0);
-                if (game) {
-                    document.getElementById("activity-section").style.display = "block";
-                    document.getElementById("discord-activity-name").textContent = game.name;
-                    if (game.assets?.large_image) {
-                        let imgKey = game.assets.large_image;
-                        let imgUrl = imgKey.startsWith("mp:external") ? imgKey.replace(/^mp:/, "https:") : `https://cdn.discordapp.com/app-assets/${game.application_id}/${imgKey}.png`;
-                        const actImg = document.getElementById("activity-image");
-                        actImg.src = imgUrl;
-                        actImg.style.display = "block";
-                    }
-                }
-
-                if (d.listening_to_spotify && d.spotify) {
-                    document.getElementById("spotify-section").style.display = "block";
-                    document.getElementById("discord-spotify-info").textContent = `${d.spotify.song} - ${d.spotify.artist}`;
-                    const spotImg = document.getElementById("spotify-image");
-                    spotImg.src = d.spotify.album_art_url;
-                    spotImg.style.display = "block";
-                }
-            } catch (err) {
-                console.error(err);
-            }
-        }
-
-        fetchDiscordStatus();
-        setInterval(fetchDiscordStatus, 15000);
-    </script>
 </body>
 </html>

@@ -48,7 +48,7 @@
             100% { opacity: 0.4; }
         }
 
-        /* Vídeo de fundo cobrindo a tela toda atrás de tudo */
+        /* Vídeo de fundo cobrindo a tela toda */
         #video-background {
             position: fixed;
             top: 0;
@@ -75,7 +75,7 @@
         .profile-card, .whatsapp-box, .music-player {
             width: 100%;
             max-width: 450px;
-            background-color: rgba(20, 20, 23, 0.55); /* Bem translúcido para o vídeo aparecer atrás */
+            background-color: rgba(20, 20, 23, 0.55); /* Translúcido para ver o fundo */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 20px;
@@ -127,7 +127,7 @@
             padding: 0 20px;
         }
 
-        /* WhatsApp box abrindo o vídeo de fundo */
+        /* Botão do WhatsApp abrindo o vídeo específico */
         .whatsapp-box {
             padding: 15px;
             text-decoration: none;
@@ -289,7 +289,7 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
-    <!-- Vídeo de fundo com o nome background.mp4 -->
+    <!-- Vídeo de fundo fixo -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="background.mp4" type="video/mp4">
     </video>
@@ -311,8 +311,8 @@
             </div>
         </div>
 
-        <!-- Botão com ícone do WhatsApp de enfeite, abrindo o background.mp4 -->
-        <a href="background.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
+        <!-- Botão com o WhatsApp de enfeite, abrindo o outro vídeo ao clicar -->
+        <a href="VID_20250513_111007_345.mp4" target="_blank" class="whatsapp-box" id="discord-profile">
             <div class="whatsapp-header">
                 <img id="discord-avatar" class="whatsapp-pic" src="avatar.png" alt="Avatar">
                 <div class="whatsapp-info-container">

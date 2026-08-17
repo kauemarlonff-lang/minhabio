@@ -15,6 +15,39 @@
             background-color: #0b0b0e;
         }
 
+        /* Tela de Entrada para destravar o som e o vídeo */
+        #enter-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 11, 14, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        #enter-screen h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin: 0;
+            opacity: 0.8;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
         #video-background {
             position: fixed;
             top: 0;
@@ -99,12 +132,19 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .discord-box:hover {
+            background-color: rgba(30, 30, 35, 0.8);
+            transform: translateY(-2px);
         }
 
         .discord-header {
             display: flex;
             align-items: center;
             gap: 12px;
+            position: relative;
         }
 
         .discord-pic {
@@ -115,9 +155,26 @@
             object-fit: cover;
         }
 
+        .discord-info-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .discord-name-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .discord-name {
             font-weight: bold;
             font-size: 16px;
+        }
+
+        .discord-icon {
+            font-size: 20px;
+            color: #5865F2;
         }
 
         .discord-status {
@@ -125,6 +182,7 @@
             align-items: center;
             font-size: 12px;
             opacity: 0.8;
+            margin-top: 2px;
         }
 
         .status-indicator {
@@ -224,6 +282,11 @@
     </style>
 </head>
 <body>
+    <!-- Tela que destrava o som e o vídeo ao clicar -->
+    <div id="enter-screen">
+        <h2>[ CLIQUE PARA ENTRAR ]</h2>
+    </div>
+
     <video id="video-background" autoplay muted loop playsinline>
         <source src="background.mp4" type="video/mp4">
     </video>
@@ -245,12 +308,15 @@
             </div>
         </div>
 
-        <!-- Discord Box -->
-        <div class="discord-box" id="discord-profile">
+        <!-- Discord Box (Clicável para abrir o perfil do Discord) -->
+        <a href="https://discord.com/users/1284897089163014154" target="_blank" class="discord-box" id="discord-profile">
             <div class="discord-header">
                 <img id="discord-avatar" class="discord-pic" src="avatar.png" alt="Discord Avatar">
-                <div>
-                    <div class="discord-name" id="discord-username">Metificha</div>
+                <div class="discord-info-container">
+                    <div class="discord-name-row">
+                        <div class="discord-name" id="discord-username">Metificha</div>
+                        <i class="fa-brands fa-discord discord-icon"></i>
+                    </div>
                     <div class="discord-status">
                         <div class="status-indicator" id="status-indicator"></div>
                         <span id="discord-status-text">Online</span>
@@ -267,7 +333,7 @@
                 <div id="discord-spotify-info">-</div>
                 <img id="spotify-image" class="activity-image" src="" alt="">
             </div>
-        </div>
+        </a>
 
         <!-- Music Player -->
         <div class="music-player">
@@ -288,7 +354,9 @@
     </div>
 
     <script>
+        const enterScreen = document.getElementById('enter-screen');
         const audioPlayer = document.getElementById('music-player');
+        const videoBackground = document.getElementById('video-background');
         const playButton = document.getElementById('play-button');
         const progressBar = document.getElementById('progress-bar');
         const progressContainer = document.getElementById('progress-container');
@@ -296,6 +364,20 @@
         const durationElement = document.getElementById('duration');
 
         audioPlayer.volume = 0.5;
+
+        // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
+        enterScreen.addEventListener('click', () => {
+            enterScreen.style.opacity = '0';
+            setTimeout(() => {
+                enterScreen.style.display = 'none';
+            }, 500);
+
+            audioPlayer.play().then(() => {
+                playButton.textContent = '⏸';
+            }).catch(e => console.log("Erro ao tocar áudio:", e));
+
+            videoBackground.play().catch(e => console.log("Erro ao tocar vídeo:", e));
+        });
 
         playButton.addEventListener('click', () => {
             if (audioPlayer.paused) {

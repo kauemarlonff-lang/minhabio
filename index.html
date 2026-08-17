@@ -9,206 +9,77 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         body, html {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            background: transparent;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0; padding: 0; min-height: 100vh;
+            font-family: 'Poppins', sans-serif; color: white;
+            background-color: #000;
         }
 
-        /* Vídeo de fundo cobrindo toda a tela de verdade, com transparência equilibrada */
+        /* Vídeo de fundo */
         #video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -999;
-            filter: brightness(0.5) contrast(1.1);
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            object-fit: cover; z-index: -999;
+            filter: brightness(0.4);
         }
 
         .container {
-            width: 100%;
-            max-width: 440px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            box-sizing: border-box;
-            z-index: 1;
+            width: 100%; max-width: 400px; margin: 0 auto; padding: 40px 20px;
+            display: flex; flex-direction: column; align-items: center; gap: 18px;
         }
 
-        /* Cartão de Perfil Principal com Transparência Real (Glassmorphism) */
         .profile-card {
-            width: 100%;
-            background: rgba(15, 15, 20, 0.35); /* Bem mais transparente para mostrar o fundo */
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
+            width: 100%; background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px); border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 22px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex; flex-direction: column; align-items: center; padding-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .profile-banner {
-            width: 100%;
-            height: 130px;
-            background-color: rgba(0, 0, 0, 0.4);
+        .banner { width: 100%; height: 120px; border-radius: 24px 24px 0 0; overflow: hidden; }
+        .banner img { width: 100%; height: 100%; object-fit: cover; }
+
+        .avatar {
+            width: 90px; height: 90px; border-radius: 50%;
+            margin-top: -45px; border: 4px solid #000;
         }
 
-        .profile-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .name { font-size: 1.5rem; font-weight: 700; margin-top: 10px; }
+        .bio { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
 
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            margin-top: -50px;
-            margin-bottom: 10px;
-            background: #000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-        }
-
-        .profile-name {
-            font-size: 21px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-        }
-
-        .profile-description {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-            padding: 0 20px;
-            line-height: 1.4;
-        }
-
-        /* Botões de Link Translúcidos idênticos à referência */
         .link-button {
-            width: 100%;
-            background: rgba(15, 15, 20, 0.35); /* Transparente deixando o vídeo aparecer por trás */
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: white;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 100%; background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px; border-radius: 16px; display: flex; align-items: center;
+            justify-content: space-between; text-decoration: none; color: white;
+            transition: 0.3s;
         }
-
-        .link-button:hover {
-            background: rgba(30, 30, 42, 0.55);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .link-content {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .link-icon {
-            font-size: 20px;
-            width: 24px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .link-text {
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 0.3px;
-        }
-
-        .link-arrow {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .link-button:hover .link-arrow {
-            transform: translateX(4px);
-            color: white;
-        }
+        .link-button:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-    <!-- Vídeo de fundo ativo -->
     <video id="video-background" autoplay muted loop playsinline>
-        <source src="esser.ai" type="video/mp4">
+        <source src="fundo.mp4" type="video/mp4">
     </video>
 
     <div class="container">
-        <!-- Bloco de Perfil Transparente -->
         <div class="profile-card">
-            <div class="profile-banner">
-                <img src="banner.png" alt="Banner">
-            </div>
-            <img src="avatar.png" class="profile-pic" alt="Avatar">
-            <div class="profile-name">Metificha</div>
-            <div class="profile-description">
-                parafusometificha | te amo
-            </div>
+            <div class="banner"><img src="banner.png" alt="Banner"></div>
+            <img src="avatar.png" class="avatar" alt="Avatar">
+            <div class="name">Metificha</div>
+            <div class="bio">parafusometificha | te amo</div>
         </div>
 
-        <!-- Botões de Links com Vidro Transparente -->
-        <a href="https://tiktok.com" target="_blank" class="link-button">
-            <div class="link-content">
-                <i class="fa-brands fa-tiktok link-icon"></i>
-                <span class="link-text">TikTok Principal</span>
-            </div>
-            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        <a href="URL_DO_SEU_TIKTOK" target="_blank" class="link-button">
+            <span><i class="fa-brands fa-tiktok"></i> TikTok</span>
+            <i class="fa-solid fa-chevron-right"></i>
         </a>
-
-        <a href="https://instagram.com" target="_blank" class="link-button">
-            <div class="link-content">
-                <i class="fa-brands fa-instagram link-icon"></i>
-                <span class="link-text">Instagram</span>
-            </div>
-            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        <a href="URL_DO_SEU_DISCORD" target="_blank" class="link-button">
+            <span><i class="fa-brands fa-discord"></i> Discord</span>
+            <i class="fa-solid fa-chevron-right"></i>
         </a>
-
-        <a href="https://youtube.com" target="_blank" class="link-button">
-            <div class="link-content">
-                <i class="fa-brands fa-youtube link-icon" style="color: #ff3b3b;"></i>
-                <span class="link-text">Canal do YouTube</span>
-            </div>
-            <i class="fa-solid fa-chevron-right link-arrow"></i>
-        </a>
-
-        <a href="https://whatsapp.com" target="_blank" class="link-button">
-            <div class="link-content">
-                <i class="fa-brands fa-whatsapp link-icon" style="color: #25D366;"></i>
-                <span class="link-text">Contato Direto</span>
-            </div>
-            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        <a href="URL_DO_SEU_SPOTIFY" target="_blank" class="link-button">
+            <span><i class="fa-brands fa-spotify"></i> Spotify</span>
+            <i class="fa-solid fa-chevron-right"></i>
         </a>
     </div>
 

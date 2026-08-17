@@ -49,16 +49,13 @@
             100% { opacity: 0.4; }
         }
 
-        /* Vídeo de fundo fixo garantido na camada de trás */
+        /* Vídeo de fundo fixo */
         #video-background {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100vw;
-            min-height: 100vh;
-            width: auto;
-            height: auto;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
             z-index: -999;
         }
@@ -76,7 +73,7 @@
             z-index: 1;
         }
 
-        /* Cards translúcidos */
+        /* Cards translúcidos com efeito vidro */
         .profile-card, .whatsapp-box, .music-player {
             width: 100%;
             max-width: 450px;
@@ -294,9 +291,10 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
-    <!-- Vídeo de fundo corrigido -->
+    <!-- Vídeo de fundo com múltiplos fallbacks de formato -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="esser.ai" type="video/mp4">
+        <source src="esser.ai" type="video/webm">
     </video>
 
     <audio id="music-player" loop>
@@ -373,8 +371,11 @@
 
         audioPlayer.volume = 0.5;
 
-        // Tenta iniciar o vídeo imediatamente (alguns navegadores permitem se estiver mutado)
-        videoBackground.play().catch(() => {});
+        // Força o carregamento e play do vídeo via JS
+        videoBackground.load();
+        videoBackground.play().catch(err => {
+            console.log("Autoplay bloqueado pelo navegador, aguardando clique:", err);
+        });
 
         // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
         enterScreen.addEventListener('click', () => {

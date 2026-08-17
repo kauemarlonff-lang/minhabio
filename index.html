@@ -8,78 +8,195 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            font-family: 'Poppins', sans-serif; color: white;
-            background-color: #000;
+        * {
+            box-sizing: border-box;
         }
 
-        /* Vídeo de fundo */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background-color: #0b0b0e;
+            overflow-x: hidden;
+        }
+
+        /* Vídeo de fundo fixo cobrindo toda a tela perfeitamente */
         #video-background {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            object-fit: cover; z-index: -999;
-            filter: brightness(0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -999;
+            filter: brightness(0.45) contrast(1.1);
         }
 
         .container {
-            width: 100%; max-width: 400px; margin: 0 auto; padding: 40px 20px;
-            display: flex; flex-direction: column; align-items: center; gap: 18px;
+            width: 100%;
+            max-width: 480px; /* Deixado um pouco mais largo conforme solicitado */
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-card {
-            width: 100%; background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px); border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex; flex-direction: column; align-items: center; padding-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            background: rgba(18, 18, 24, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .banner { width: 100%; height: 120px; border-radius: 24px 24px 0 0; overflow: hidden; }
-        .banner img { width: 100%; height: 100%; object-fit: cover; }
+        .banner {
+            width: 100%;
+            height: 130px;
+            background-color: #101015;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .avatar {
-            width: 90px; height: 90px; border-radius: 50%;
-            margin-top: -45px; border: 4px solid #000;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            margin-top: -48px;
+            margin-bottom: 12px;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .name { font-size: 1.5rem; font-weight: 700; margin-top: 10px; }
-        .bio { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+        .name {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .bio {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0 20px;
+            line-height: 1.4;
+        }
 
         .link-button {
-            width: 100%; background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 18px; border-radius: 16px; display: flex; align-items: center;
-            justify-content: space-between; text-decoration: none; color: white;
-            transition: 0.3s;
+            width: 100%;
+            background: rgba(18, 18, 24, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 16px 22px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
-        .link-button:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.02); }
+
+        .link-button:hover {
+            background: rgba(30, 30, 42, 0.65);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .link-icon {
+            font-size: 20px;
+            width: 26px;
+            text-align: center;
+        }
+
+        .link-text {
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .link-arrow {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .link-button:hover .link-arrow {
+            transform: translateX(4px);
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <video id="video-background" autoplay muted loop playsinline>
+    <!-- Vídeo com atributos rigorosos para garantir a reprodução e evitar tela branca -->
+    <video id="video-background" autoplay muted loop playsinline preload="auto">
         <source src="fundo.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos de fundo.
     </video>
 
     <div class="container">
         <div class="profile-card">
-            <div class="banner"><img src="banner.png" alt="Banner"></div>
+            <div class="banner">
+                <img src="banner.png" alt="Banner">
+            </div>
             <img src="avatar.png" class="avatar" alt="Avatar">
             <div class="name">Metificha</div>
             <div class="bio">parafusometificha | te amo</div>
         </div>
 
-        <a href="URL_DO_SEU_TIKTOK" target="_blank" class="link-button">
-            <span><i class="fa-brands fa-tiktok"></i> TikTok</span>
-            <i class="fa-solid fa-chevron-right"></i>
+        <a href="https://tiktok.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-tiktok link-icon"></i>
+                <span class="link-text">TikTok Principal</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
-        <a href="URL_DO_SEU_DISCORD" target="_blank" class="link-button">
-            <span><i class="fa-brands fa-discord"></i> Discord</span>
-            <i class="fa-solid fa-chevron-right"></i>
+
+        <a href="https://discord.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-discord link-icon" style="color: #5865F2;"></i>
+                <span class="link-text">Discord</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
-        <a href="URL_DO_SEU_SPOTIFY" target="_blank" class="link-button">
-            <span><i class="fa-brands fa-spotify"></i> Spotify</span>
-            <i class="fa-solid fa-chevron-right"></i>
+
+        <a href="https://spotify.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-spotify link-icon" style="color: #1DB954;"></i>
+                <span class="link-text">Spotify</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
     </div>
 

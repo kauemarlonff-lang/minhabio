@@ -19,8 +19,8 @@
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
             color: white;
-            /* Imagem de fundo fixa cobrindo a tela inteira com escurecimento leve */
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('fundo.png') no-repeat center center fixed;
+            /* Camada escura forte por cima da foto para destacar o vidro */
+            background: linear-gradient(rgba(5, 5, 8, 0.85), rgba(5, 5, 8, 0.85)), url('fundo.png') no-repeat center center fixed;
             background-size: cover;
             overflow-x: hidden;
             display: flex;
@@ -43,7 +43,7 @@
 
         .profile-card {
             width: 100%;
-            background: rgba(18, 18, 24, 0.35); /* Transparência real revelando a foto de fundo */
+            background: rgba(18, 18, 24, 0.55); /* Vidro escuro translúcido */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 26px;
@@ -53,7 +53,7 @@
             align-items: center;
             padding-bottom: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
 
         .banner {
@@ -98,7 +98,7 @@
 
         .link-button {
             width: 100%;
-            background: rgba(18, 18, 24, 0.35); /* Transparência nos botões */
+            background: rgba(18, 18, 24, 0.55); /* Vidro escuro translúcido nos botões */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -114,7 +114,7 @@
         }
 
         .link-button:hover {
-            background: rgba(30, 30, 42, 0.55);
+            background: rgba(30, 30, 42, 0.75);
             border-color: rgba(255, 255, 255, 0.35);
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
@@ -170,18 +170,26 @@
             <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
 
-        <a href="https://discord.com" target="_blank" class="link-button">
+        <a href="https://instagram.com" target="_blank" class="link-button">
             <div class="link-content">
-                <i class="fa-brands fa-discord link-icon" style="color: #5865F2;">8</i>
-                <span class="link-text">Discord</span>
+                <i class="fa-brands fa-instagram link-icon" style="color: #E1306C;"></i>
+                <span class="link-text">Instagram</span>
             </div>
             <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>
 
-        <a href="https://spotify.com" target="_blank" class="link-button">
+        <a href="https://youtube.com" target="_blank" class="link-button">
             <div class="link-content">
-                <i class="fa-brands fa-spotify link-icon" style="color: #1DB954;"></i>
-                <span class="link-text">Spotify</span>
+                <i class="fa-brands fa-youtube link-icon" style="color: #FF0000;"></i>
+                <span class="link-text">Canal do YouTube</span>
+            </div>
+            <i class="fa-solid fa-chevron-right link-arrow"></i>
+        </a>
+
+        <a href="https://whatsapp.com" target="_blank" class="link-button">
+            <div class="link-content">
+                <i class="fa-brands fa-whatsapp link-icon" style="color: #25D366;"></i>
+                <span class="link-text">Contato Direto</span>
             </div>
             <i class="fa-solid fa-chevron-right link-arrow"></i>
         </a>

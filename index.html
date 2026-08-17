@@ -13,6 +13,7 @@
             font-family: 'Poppins', sans-serif;
             color: white;
             background-color: #0b0b0e;
+            overflow-x: hidden;
         }
 
         /* Tela de Entrada para destravar o som e o vídeo */
@@ -48,15 +49,18 @@
             100% { opacity: 0.4; }
         }
 
-        /* Vídeo de fundo fixo */
+        /* Vídeo de fundo fixo garantido na camada de trás */
         #video-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100vw;
+            min-height: 100vh;
+            width: auto;
+            height: auto;
             object-fit: cover;
-            z-index: -10;
+            z-index: -999;
         }
 
         .container {
@@ -290,7 +294,7 @@
         <h2>[ CLIQUE PARA ENTRAR ]</h2>
     </div>
 
-    <!-- Vídeo de fundo atualizado para esser.ai -->
+    <!-- Vídeo de fundo corrigido -->
     <video id="video-background" autoplay muted loop playsinline>
         <source src="esser.ai" type="video/mp4">
     </video>
@@ -368,6 +372,9 @@
         const durationElement = document.getElementById('duration');
 
         audioPlayer.volume = 0.5;
+
+        // Tenta iniciar o vídeo imediatamente (alguns navegadores permitem se estiver mutado)
+        videoBackground.play().catch(() => {});
 
         // Ao clicar na tela inicial, some com ela, toca a música e força o vídeo
         enterScreen.addEventListener('click', () => {

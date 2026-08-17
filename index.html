@@ -19,11 +19,14 @@
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
             color: white;
-            background-color: #0b0b0e;
+            background: #111;
             overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Vídeo de fundo fixo cobrindo toda a tela perfeitamente */
+        /* Vídeo de fundo fixo e cobrindo toda a tela */
         #video-background {
             position: fixed;
             top: 0;
@@ -32,14 +35,14 @@
             height: 100vh;
             object-fit: cover;
             z-index: -999;
-            filter: brightness(0.45) contrast(1.1);
+            filter: brightness(0.5) contrast(1.1);
         }
 
         .container {
             width: 100%;
-            max-width: 480px; /* Deixado um pouco mais largo conforme solicitado */
+            max-width: 520px; /* Mais largo e esticado, no tamanho ideal */
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,25 +51,26 @@
             z-index: 1;
         }
 
+        /* Cartão de Perfil com transparência real estilo vidro */
         .profile-card {
             width: 100%;
-            background: rgba(18, 18, 24, 0.45);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 26px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(15, 15, 22, 0.4);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-bottom: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
         }
 
         .banner {
             width: 100%;
-            height: 130px;
-            background-color: #101015;
+            height: 140px;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .banner img {
@@ -76,41 +80,42 @@
         }
 
         .avatar {
-            width: 95px;
-            height: 95px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid rgba(255, 255, 255, 0.9);
-            margin-top: -48px;
+            margin-top: -50px;
             margin-bottom: 12px;
             background: #000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
         }
 
         .name {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 4px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
         }
 
         .bio {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             text-align: center;
             padding: 0 20px;
             line-height: 1.4;
         }
 
+        /* Botões largos e com transparência fluida */
         .link-button {
             width: 100%;
-            background: rgba(18, 18, 24, 0.45);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 16px 22px;
-            border-radius: 18px;
+            background: rgba(15, 15, 22, 0.4);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 18px 24px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -121,8 +126,8 @@
         }
 
         .link-button:hover {
-            background: rgba(30, 30, 42, 0.65);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(30, 30, 45, 0.65);
+            border-color: rgba(255, 255, 255, 0.35);
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
         }
@@ -130,23 +135,23 @@
         .link-content {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
 
         .link-icon {
-            font-size: 20px;
+            font-size: 22px;
             width: 26px;
             text-align: center;
         }
 
         .link-text {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: 0.3px;
         }
 
         .link-arrow {
-            font-size: 13px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.4);
             transition: transform 0.3s ease, color 0.3s ease;
         }
@@ -159,10 +164,9 @@
 </head>
 <body>
 
-    <!-- Vídeo com atributos rigorosos para garantir a reprodução e evitar tela branca -->
-    <video id="video-background" autoplay muted loop playsinline preload="auto">
+    <!-- Vídeo de fundo com parâmetros essenciais de reprodução -->
+    <video id="video-background" autoplay muted loop playsinline>
         <source src="fundo.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos de fundo.
     </video>
 
     <div class="container">
